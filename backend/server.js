@@ -9,7 +9,8 @@ const app =  express();
 const router = express.Router();
 
 //this is our MongoDB database
-const dbRoute = "mongodb://jelo:a9bc839993@ds151382.mlab.com:51382/jelotest";
+//const dbRoute = "mongodb://jelo:a9bc839993@ds151382.mlab.com:51382/jelotest";
+const dbRoute = "mongodb://vamisola:GuDLJQiQmgz8HtqEUHH}@ds135974.mlab.com:35974/message-mern";
 
 //connects our back end code with the database
 mongoose.connect(
@@ -52,7 +53,7 @@ router.post("/updateData", (req, res) => {
 //this method removes existing data in our database
 router.delete("/deleteData", (req, res) => {
     const { id } = req.body;
-    Data.findAndDelete(id, err => {
+    Data.findOneAndDelete(id, err => {
         if(err) return res.send(err);
         return res.json({success: true});
     });
